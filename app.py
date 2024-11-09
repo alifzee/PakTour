@@ -3,6 +3,8 @@ import pandas as pd
 import streamlit as st
 import requests
 from googletrans import Translator
+import folium
+from streamlit_folium import folium_static
 
 # Load data from Excel file for offline mode
 data = pd.read_excel("/content/pak.xlsx")
@@ -93,6 +95,28 @@ if st.button("Submit Query"):
             st.write("Offline response (in Urdu):")
             st.write(translated_text)
 
+# Map feature
+st.subheader("Explore Tourist Locations on the Map")
+map = folium.Map(location=[30.3753, 69.3451], zoom_start=5)  # Centered on Pakistan
+
+# Add some tourist locations (latitude, longitude, name)
+tourist_locations = [
+    {"name": "Lahore Fort", "coordinates": [31.5820, 74.3293]},
+    {"name": "Badshahi Mosque", "coordinates": [31.5820, 74.3090]},
+    {"name": "Karachi Beach", "coordinates": [24.8607, 67.0011]},
+    {"name": "Hunza Valley", "coordinates": [36.2950, 74.6484]},
+]
+
+for location in tourist_locations:
+    folium.Marker(
+        location["coordinates"],
+        popup=location["name"],
+        icon=folium.Icon(color='blue')
+    ).add_to(map)
+
+# Display the map in the Streamlit app
+folium_static(map)
+
 # Conclusion and feedback collection
 st.write("Thank you for using the Pakistan Travel Assistant!")
 feedback = st.text_input("Please provide your feedback here:")
@@ -101,5 +125,5 @@ if st.button("Submit Feedback"):
 
 # Note for installation
 # !pip install --upgrade httpx
-# !pip install pandas streamlit requests googletrans==4.0.0-rc1
+# !pip install pandas streamlit requests googletrans==4.0.0-rc1 folium streamlit-folium
 # !streamlit run app.py & npx localtunnel --port 8501 & curl ipv4.icanhazip.com
