@@ -29,6 +29,27 @@ st.subheader("Your friendly virtual tour guide with 40 years of expertise in Pak
 # Greeting and initial introduction
 st.write("Welcome! You can ask me about famous places, weather, events, or other travel-related topics in Pakistan.")
 
+# Help dropdown with detailed features
+with st.expander("Help", expanded=False):
+    st.write("### Welcome to the Virtual Pakistan Travel Guide!")
+    st.write("This chatbot can assist you with the following features:")
+    st.write("1. **Travel Information:**")
+    st.write("   - Get detailed information about famous travel destinations in Pakistan, including history, culture, and attractions.")
+    st.write("2. **Directions:**")
+    st.write("   - Receive guidance on how to reach various locations, including public transport options and travel tips.")
+    st.write("3. **Language Support:**")
+    st.write("   - Get responses in Urdu for better understanding and accessibility.")
+    st.write("4. **Weather Updates:**")
+    st.write("   - Inquire about current weather conditions in different regions of Pakistan.")
+    st.write("5. **Local Events:**")
+    st.write("   - Find out about upcoming events, festivals, and activities happening in various cities.")
+    st.write("6. **Travel Tips:**")
+    st.write("   - Get useful travel tips, including safety advice, cultural etiquette, and packing suggestions.")
+    st.write("7. **Feedback and Queries:**")
+    st.write("   - Share your feedback or ask any additional questions you might have.")
+    st.write("### How to Use:")
+    st.write("Simply type your question in the input box and click 'Submit Query' to receive assistance.")
+
 # Text input for the user query
 user_input = st.text_input("Type your question here")
 
@@ -77,9 +98,8 @@ st.write("Thank you for using the Pakistan Travel Assistant!")
 feedback = st.text_input("Please provide your feedback here:")
 if st.button("Submit Feedback"):
     st.write("Thank you for your feedback!")
-  
-  # !pip install --upgrade httpx
-  
-# !pip install pandas streamlit requests googletrans==4.0.0-rc1
 
+# Note for installation
+# !pip install --upgrade httpx
+# !pip install pandas streamlit requests googletrans==4.0.0-rc1
 # !streamlit run app.py & npx localtunnel --port 8501 & curl ipv4.icanhazip.com
