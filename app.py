@@ -80,6 +80,6 @@ if st.button("Submit Feedback"):
   
   # !pip install --upgrade httpx
   
-# !pip install pandas streamlit requests googletrans
+# !pip install pandas streamlit requests googletrans==4.0.0-rc1
 
 # !streamlit run app.py & npx localtunnel --port 8501 & curl ipv4.icanhazip.com
